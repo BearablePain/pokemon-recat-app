@@ -1,3 +1,5 @@
+Цель: 
+
 Стек:
 1. react/react-native
 2. react-router/react-navigation/react-native-navigation
