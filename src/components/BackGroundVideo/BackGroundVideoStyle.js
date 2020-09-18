@@ -15,5 +15,3 @@ export const FullscreenBgVideo = styled.video`
   left: 0;
   width: 100%;
 `;
-
-

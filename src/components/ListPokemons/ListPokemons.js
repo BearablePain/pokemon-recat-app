@@ -6,7 +6,6 @@ import Card from './Card/Card';
 import { Container, Logo, Input } from './ListPokemonStyle';
 import LogoImage from '../../public/logo.png';
 
-
 const ListPokemons = () => {
   const [pokemonsState, setPokemonsState] = useState([]);
 
@@ -15,14 +14,12 @@ const ListPokemons = () => {
   const dispatch = useDispatch();
   const searchPokemos = useSelector((state) => state.searchPokemons);
 
-
-
   useEffect(() => {
     dispatch(getPokemons());
   }, []);
 
   useEffect(() => {
-    setPokemonsState(state =>
+    setPokemonsState((state) =>
       searchPokemos.length > 0 ? (state = searchPokemos) : (state = pokemons)
     );
   }, [pokemons, searchPokemos]);

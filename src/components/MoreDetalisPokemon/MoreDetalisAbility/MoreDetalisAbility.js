@@ -6,15 +6,15 @@ import { getPokemons, startFetchAbility } from '../../../redux/action';
 import { ButtonPrimary } from '../../Button/ButtonBack';
 
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-width: 50%;
-margin: auto;
-padding: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  padding: 40px;
 `;
 
 const Text = styled.p`
-line-height: 1.5;
+  line-height: 1.5;
 `;
 
 const MoreDetalisAbility = () => {
@@ -37,7 +37,7 @@ const MoreDetalisAbility = () => {
     if (pokemon) {
       console.log('сработала загрузка способности');
       pokemon.abilities.forEach((el) => {
-        if (el.ability.name === abilityParams) {
+        if (el.ability.name === abilityParams ) {
           dispatch(startFetchAbility(el.ability.url));
         }
       });
@@ -45,9 +45,7 @@ const MoreDetalisAbility = () => {
   }, [pokemon]);
 
   let ability = useSelector((state) => state.ability);
-
-
-
+console.log(ability)
   return (
     <>
       <Container>

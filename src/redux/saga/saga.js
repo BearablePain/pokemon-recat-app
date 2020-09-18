@@ -5,7 +5,6 @@ import { START_FETCH_ABILITY } from '../actionTypes';
 const fetchAbility = async (url) => {
   const responce = await fetch(url);
   const result = await responce.json();
-  console.log(result.effect_entries[0].effect);
   return result;
 };
 
