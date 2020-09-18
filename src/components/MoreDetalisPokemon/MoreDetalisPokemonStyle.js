@@ -15,7 +15,11 @@ export const Td = styled.td`
 `;
 
 export const Container = styled.div `
-display: flex
+display: flex;
+flex-direction: row;
+align-items: center;
+position: relative;
+margin-left: 20%
 
 `
 

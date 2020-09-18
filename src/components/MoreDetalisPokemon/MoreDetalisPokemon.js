@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Link, useHistory, useParams } from 'react-router-dom';
 import { getPokemons, startFetchAbility } from '../../redux/action';
+import { ButtonPrimary } from '../Button/ButtonBack';
 import getId from '../ListPokemons/generatorId';
-import { Table, Td, Container } from './MoreDetalisPokemonStyle';
+import { Table, Td, Container, Button } from './MoreDetalisPokemonStyle';
 
 const MoreDetalisPokemon = () => {
   const pokemonParams = useParams().name;
@@ -21,12 +22,14 @@ const MoreDetalisPokemon = () => {
   return (
     <>
       {pokemon && (
+        <>
         <Container>
           <img
             src={pokemon.img.front_shiny}
             alt="Avatar"
-            style={{ width: '40%' }}
+            style={{ width: '32%' }}
           />
+          <div>
           <Table>
             <tbody>
               <tr>
@@ -54,7 +57,6 @@ const MoreDetalisPokemon = () => {
                 <Td>
                   {pokemon.abilities.map((el, i) => (
                     <Link
-                     
                       to={`${pokemonParams}/${el.ability.name}`}
                       key={getId()}
                     >
@@ -66,9 +68,13 @@ const MoreDetalisPokemon = () => {
                 </Td>
               </tr>
             </tbody>
+
           </Table>
-          <button onClick={history.goBack}>Back</button>
+          <ButtonPrimary onClick={history.goBack} style = {{alignSelf: 'center'}}>Go Back</ButtonPrimary>
+</div>
         </Container>
+
+</>
       )}
     </>
   );

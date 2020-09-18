@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getInputPokemons, getPokemons } from '../../redux/action';
 import getId from './generatorId';
 import Card from './Card/Card';
-import { Container, Logo } from './style';
+import { Container, Logo, Input } from './ListPokemonStyle';
 import LogoImage from '../../public/logo.png';
+
 
 const ListPokemons = () => {
   const [pokemonsState, setPokemonsState] = useState([]);
@@ -14,12 +15,14 @@ const ListPokemons = () => {
   const dispatch = useDispatch();
   const searchPokemos = useSelector((state) => state.searchPokemons);
 
+
+
   useEffect(() => {
     dispatch(getPokemons());
   }, []);
 
   useEffect(() => {
-    setPokemonsState((state) =>
+    setPokemonsState(state =>
       searchPokemos.length > 0 ? (state = searchPokemos) : (state = pokemons)
     );
   }, [pokemons, searchPokemos]);
@@ -28,9 +31,9 @@ const ListPokemons = () => {
     <>
       <Logo src={LogoImage} alt="Avatar" />
       <div>
-        <input
+        <Input
           type="text"
-          placeholder="Поле для поиска покемона"
+          placeholder="Search..."
           name="searchPokemons"
           onChange={(e) => dispatch(getInputPokemons(pokemons, e.target.value))}
         />

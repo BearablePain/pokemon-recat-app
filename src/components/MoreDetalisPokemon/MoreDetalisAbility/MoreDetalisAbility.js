@@ -1,7 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import { getPokemons, startFetchAbility } from '../../../redux/action';
+import { ButtonPrimary } from '../../Button/ButtonBack';
+
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+width: 50%;
+margin: auto;
+padding: 40px;
+`;
+
+const Text = styled.p`
+line-height: 1.5;
+`;
 
 const MoreDetalisAbility = () => {
   const history = useHistory();
@@ -32,10 +46,16 @@ const MoreDetalisAbility = () => {
 
   let ability = useSelector((state) => state.ability);
 
+
+
   return (
     <>
-      {ability.effect_entries && <p>{ability.effect_entries[1].effect}</p>}
-      <button onClick={history.goBack}>go Back</button>
+      <Container>
+        {ability.effect_entries && (
+          <Text>{ability.effect_entries[1].effect}</Text>
+        )}
+        <ButtonPrimary onClick={history.goBack}>go Back</ButtonPrimary>
+      </Container>
     </>
   );
 };
