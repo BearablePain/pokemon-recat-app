@@ -22,4 +22,4 @@ typescript;
 рефакторинг кода
 
 strart:
-npm i => npm run dev => http://localhost:3000/
+npm i => npm start => http://localhost:3000/
