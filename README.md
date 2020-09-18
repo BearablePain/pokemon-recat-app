@@ -1,3 +1,5 @@
+Цель: 
+
 Стек:
 1. react/react-native
 2. react-router/react-navigation/react-native-navigation
@@ -26,7 +28,8 @@
 Осталось сделать:
 typescript;
 доработать верстку;
-рефакторинг кода
+рефакторинг кода;
+комментарии;
 
 strart:
 npm i => npm start => http://localhost:3000/
