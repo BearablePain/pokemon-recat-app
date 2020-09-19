@@ -26,22 +26,21 @@ const getMoreDetalis = async (url) => {
 
 //  экшен для загрузки покемонов в стор из pokeapi
 
-export const getPokemons = () => {
-  return async (dispatch) => {
-    const responce = await fetch('https://pokeapi.co/api/v2/pokemon/');
-    const result = await responce.json();
-    const pokemonsArr = result.results;
-    const pokemons = [];
-    for (const key of pokemonsArr) {
-      const tempPokemon = await getMoreDetalis(key.url);
-      pokemons.push(tempPokemon);
-    }
+export const getPokemons = () => async (dispatch) => {
+  const responce = await fetch('https://pokeapi.co/api/v2/pokemon/');
+  const result = await responce.json();
+  const pokemonsArr = result.results;
+  const pokemons = [];
 
-    return dispatch({
-      type: GET_POKEMONS,
-      payload: pokemons,
-    });
-  };
+  for (const key of pokemonsArr) {
+    const tempPokemon = await getMoreDetalis(key.url);
+    pokemons.push(tempPokemon);
+  }
+
+  return dispatch({
+    type: GET_POKEMONS,
+    payload: pokemons,
+  });
 };
 
 // экшен для формирования нового списка покемонов при вводе значения в инпут
@@ -57,4 +56,7 @@ export const startFetchAbility = (url) => ({ type: START_FETCH_ABILITY, url });
 
 // экшен для загрузки  инофрмации о способности
 
-export const getInfoTypesAbility = (payload) => ({ type: GET_ABILITY_INFO, payload });
+export const getInfoTypesAbility = (payload) => ({
+  type: GET_ABILITY_INFO,
+  payload,
+});

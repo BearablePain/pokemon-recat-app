@@ -4,7 +4,9 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { getPokemons } from '../../redux/action';
 import ButtonPrimary from '../Button/ButtonBack';
 import getId from '../ListPokemons/generatorId';
-import { Table, Td, Container, TdName } from './MoreDetalisPokemonStyle';
+import {
+  Table, Td, Container, TdName,
+} from './MoreDetalisPokemonStyle';
 
 const MoreDetalisPokemon = () => {
   const pokemonParams = useParams().name;
@@ -12,9 +14,7 @@ const MoreDetalisPokemon = () => {
   const history = useHistory();
 
   // выявить нужного покемона для отображения
-  const pokemon = useSelector((state) =>
-    state.pokemons.find((el) => pokemonParams === el.name)
-  );
+  const pokemon = useSelector((state) => state.pokemons.find((el) => pokemonParams === el.name));
 
   useEffect(() => {
     dispatch(getPokemons());

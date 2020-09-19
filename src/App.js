@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import GlobalStyles from './styles/styles';
 import ListPokemons from './components/ListPokemons/ListPokemons';
-import MoreDetalisPokemon from './components/MoreDetalisPokemon/MoreDetalisPokemon.js';
+import MoreDetalisPokemon from './components/MoreDetalisPokemon/MoreDetalisPokemon';
 import BackGroundVideo from './components/BackGroundVideo/BackGroundVideo';
 import MoreDetalisAbility from './components/MoreDetalisPokemon/MoreDetalisAbility/MoreDetalisAbility';
 

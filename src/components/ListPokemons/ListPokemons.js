@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInputPokemons, getPokemons } from '../../redux/action';
 import getId from './generatorId';
-import Card from './Card/Card';
+import Card from './Card/Card.jsx';
 import { Container, Logo, Input } from './ListPokemonStyle';
 import LogoImage from '../../public/logo.png';
 
 const ListPokemons = () => {
-
   const [pokemonsState, setPokemonsState] = useState([]);
 
   const pokemons = useSelector((state) => state.pokemons);

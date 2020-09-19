@@ -16,7 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducer,
   tempStore,
-  composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware))
+  composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware)),
 );
 
 //  запуск саги

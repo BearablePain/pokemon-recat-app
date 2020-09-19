@@ -18,7 +18,6 @@ export const Container = styled.div`
 `;
 
 export const Table = styled.table`
-  ${'' /* border-collapse: separate; */}
   background: #fff;
   border-radius: 5px;
   margin: 10% auto;
