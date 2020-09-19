@@ -29,17 +29,15 @@ const getMoreDetalis = async (url) => {
 export const getPokemons = () => async (dispatch) => {
   const responce = await fetch('https://pokeapi.co/api/v2/pokemon/');
   const result = await responce.json();
-  const pokemonsArr = result.results;
-  const pokemons = [];
 
-  for (const key of pokemonsArr) {
-    const tempPokemon = await getMoreDetalis(key.url);
-    pokemons.push(tempPokemon);
-  }
+  // на каждом элементе списка вызываем для покемона функцию для загрузки детальной информации
 
+  const pokemonsArr = await Promise.all(
+    result.results.map((el) => getMoreDetalis(el.url)),
+  );
   return dispatch({
     type: GET_POKEMONS,
-    payload: pokemons,
+    payload: pokemonsArr,
   });
 };
 
