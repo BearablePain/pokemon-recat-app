@@ -13,6 +13,7 @@ const ButtonPrimary = styled.button`
   border-radius: 12px;
   text-decoration: none;
   display: inline-block;
+  cursor: pointer;
 `;
 
 export default ButtonPrimary;

@@ -7,6 +7,7 @@ import { Container, Logo, Input } from './ListPokemonStyle';
 import LogoImage from '../../public/logo.png';
 
 const ListPokemons = () => {
+
   const [pokemonsState, setPokemonsState] = useState([]);
 
   const pokemons = useSelector((state) => state.pokemons);

@@ -26,3 +26,8 @@ export const Table = styled.table`
 `;
 
 export const Button = styled.button``;
+
+export const TdName = styled(Td)`
+  color: orange;
+  opacity: 0.8;
+`;

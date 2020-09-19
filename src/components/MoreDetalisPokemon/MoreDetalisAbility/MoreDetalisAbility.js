@@ -32,6 +32,8 @@ const MoreDetalisAbility = () => {
     }
   }, [dispatch, ability]);
 
+  /* после того как нашелся покемон делаем запрос
+   для загрузки детальной информации о способности покемона */
   useEffect(() => {
     if (pokemon) {
       pokemon.abilities.forEach((el) => {

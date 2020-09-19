@@ -4,18 +4,21 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { getPokemons } from '../../redux/action';
 import ButtonPrimary from '../Button/ButtonBack';
 import getId from '../ListPokemons/generatorId';
-import { Table, Td, Container } from './MoreDetalisPokemonStyle';
+import { Table, Td, Container, TdName } from './MoreDetalisPokemonStyle';
 
 const MoreDetalisPokemon = () => {
   const pokemonParams = useParams().name;
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // выявить нужного покемона для отображения
+  const pokemon = useSelector((state) =>
+    state.pokemons.find((el) => pokemonParams === el.name)
+  );
+
   useEffect(() => {
     dispatch(getPokemons());
   }, [dispatch]);
-
-  const pokemon = useSelector((state) => state.pokemons.find((el) => pokemonParams === el.name));
 
   return (
     <>
@@ -31,11 +34,11 @@ const MoreDetalisPokemon = () => {
               <Table>
                 <tbody>
                   <tr>
-                    <Td>Name</Td>
+                    <TdName>Name</TdName>
                     <Td>{pokemon.name}</Td>
                   </tr>
                   <tr>
-                    <Td>Type</Td>
+                    <TdName>Type</TdName>
                     <Td>
                       {pokemon.types.length > 0
                         ? pokemon.types.join(', ')
@@ -43,18 +46,19 @@ const MoreDetalisPokemon = () => {
                     </Td>
                   </tr>
                   <tr>
-                    <Td>Height</Td>
+                    <TdName>Height</TdName>
                     <Td>{pokemon.height}</Td>
                   </tr>
                   <tr>
-                    <Td>Weight</Td>
+                    <TdName>Weight</TdName>
                     <Td>{pokemon.weight}</Td>
                   </tr>
                   <tr>
-                    <Td>Abilities</Td>
+                    <TdName>Abilities</TdName>
                     <Td>
                       {pokemon.abilities.map((el, i) => (
                         <Link
+                          style={{ textDecoration: 'none' }}
                           to={`${pokemonParams}/${el.ability.name}`}
                           key={getId()}
                         >
