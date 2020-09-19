@@ -4,7 +4,7 @@ import {
   GET_SEARCH_POKEMONS,
 } from './actionTypes';
 
-export const reducer = (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case GET_ABILITY_INFO:
       return {
@@ -16,7 +16,6 @@ export const reducer = (state, action) => {
         ...state,
         pokemons: action.payload,
       };
-
     case GET_SEARCH_POKEMONS:
       return {
         ...state,
@@ -26,3 +25,5 @@ export const reducer = (state, action) => {
       return state;
   }
 };
+
+export default reducer;

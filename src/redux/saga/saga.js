@@ -1,4 +1,7 @@
-import { put, takeLatest, all, call } from 'redux-saga/effects';
+import {
+  put, takeLatest, all, call,
+} from 'redux-saga/effects';
+
 import { getInfoTypesAbility } from '../action';
 import { START_FETCH_ABILITY } from '../actionTypes';
 
@@ -8,7 +11,9 @@ const fetchAbility = async (url) => {
   return result;
 };
 
-// создаем воркер, который делает запрос по функции прописанной выше и запускает экшен, который положит информацию в редакс
+// создаем воркер, который делает запрос по функции
+//  прописанной выше и запускает экшен, который положит информацию в редакс
+
 function* loadInfoAbility(action) {
   // вызываем фетч передавая аргументы через call саги
   const data = yield call(fetchAbility, action.url);

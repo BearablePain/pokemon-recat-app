@@ -1,4 +1,5 @@
-// import React from 'react';
+// функция для генерирования уеикального id
+
 let id = 0;
 const getId = () => {
   function* GeneratorId() {

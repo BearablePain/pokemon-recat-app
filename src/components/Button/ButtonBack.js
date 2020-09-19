@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonPrimary = styled.button`
+const ButtonPrimary = styled.button`
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet');
   font-family: 'Press Start 2P', cursive;
 
@@ -14,3 +14,5 @@ export const ButtonPrimary = styled.button`
   text-decoration: none;
   display: inline-block;
 `;
+
+export default ButtonPrimary;

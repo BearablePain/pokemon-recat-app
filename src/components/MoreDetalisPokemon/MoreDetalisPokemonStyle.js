@@ -17,7 +17,6 @@ export const Container = styled.div`
   margin-left: 20%;
 `;
 
-
 export const Table = styled.table`
   ${'' /* border-collapse: separate; */}
   background: #fff;

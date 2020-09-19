@@ -14,14 +14,17 @@ const ListPokemons = () => {
   const dispatch = useDispatch();
   const searchPokemos = useSelector((state) => state.searchPokemons);
 
+  // Загрузка покемонов в сторе при внедрении этого компонента
   useEffect(() => {
     dispatch(getPokemons());
-  }, []);
+  }, [dispatch]);
+
+  //  следим за состоянием покемонов.
+  //  если пользователь вводит в поиск значение
+  //  в стейт кладется массив из покемонов с начальными буквами из инпута
 
   useEffect(() => {
-    setPokemonsState((state) =>
-      searchPokemos.length > 0 ? (state = searchPokemos) : (state = pokemons)
-    );
+    setPokemonsState(searchPokemos.length > 0 ? searchPokemos : pokemons);
   }, [pokemons, searchPokemos]);
 
   return (

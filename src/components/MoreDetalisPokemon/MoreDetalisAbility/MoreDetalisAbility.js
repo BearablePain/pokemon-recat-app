@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getPokemons, startFetchAbility } from '../../../redux/action';
-import { ButtonPrimary } from '../../Button/ButtonBack';
+import ButtonPrimary from '../../Button/ButtonBack';
 
 const Container = styled.div`
   display: flex;
@@ -23,29 +23,25 @@ const MoreDetalisAbility = () => {
   const pokemonParams = useParams().name;
   const abilityParams = useParams().ability;
 
-  const pokemon = useSelector((state) =>
-    state.pokemons.find((el) => pokemonParams === el.name)
-  );
+  const pokemon = useSelector((state) => state.pokemons.find((el) => pokemonParams === el.name));
+  const ability = useSelector((state) => state.ability);
+
   useEffect(() => {
-    console.log('сработала загрузка покемонов');
     if (Object.keys(ability).length === 0) {
       dispatch(getPokemons());
     }
-  }, []);
+  }, [dispatch, ability]);
 
   useEffect(() => {
     if (pokemon) {
-      console.log('сработала загрузка способности');
       pokemon.abilities.forEach((el) => {
-        if (el.ability.name === abilityParams ) {
+        if (el.ability.name === abilityParams) {
           dispatch(startFetchAbility(el.ability.url));
         }
       });
     }
-  }, [pokemon]);
+  }, [pokemon, dispatch, abilityParams]);
 
-  let ability = useSelector((state) => state.ability);
-console.log(ability)
   return (
     <>
       <Container>

@@ -5,6 +5,11 @@ import {
   GET_SEARCH_POKEMONS,
 } from './actionTypes';
 
+/*
+ функция для возврата более подробной информации 
+вызывается в функции getPokemons на итерации массива с покемонами
+*/
+
 const getMoreDetalis = async (url) => {
   const responce = await fetch(`${url}`);
   const result = await responce.json();
@@ -19,18 +24,17 @@ const getMoreDetalis = async (url) => {
   return pokemon;
 };
 
+//  экшен для загрузки покемонов в стор из pokeapi
+
 export const getPokemons = () => {
   return async (dispatch) => {
     const responce = await fetch('https://pokeapi.co/api/v2/pokemon/');
     const result = await responce.json();
-    const polemonsArr = result.results;
+    const pokemonsArr = result.results;
     const pokemons = [];
-
-    for (let key in polemonsArr) {
-      if (Object.prototype.hasOwnProperty.call(polemonsArr, key)) {
-        const tempPokemon = await getMoreDetalis(polemonsArr[key].url);
-        pokemons.push(tempPokemon);
-      }
+    for (const key of pokemonsArr) {
+      const tempPokemon = await getMoreDetalis(key.url);
+      pokemons.push(tempPokemon);
     }
 
     return dispatch({
@@ -40,19 +44,17 @@ export const getPokemons = () => {
   };
 };
 
+// экшен для формирования нового списка покемонов при вводе значения в инпут
+
 export const getInputPokemons = (pokemons, input) => {
-  console.log(pokemons, input);
-  const payload = pokemons.filter((el) =>
-    el.name.toLowerCase().startsWith(input.toLowerCase())
-  );
-  console.log(payload);
+  const payload = pokemons.filter((el) => el.name.toLowerCase().startsWith(input.toLowerCase()));
   return { type: GET_SEARCH_POKEMONS, payload };
 };
 
-export const startFetchAbility = (url) => {
-  return { type: START_FETCH_ABILITY, url };
-};
+//  экшен для запуска саги
 
-export const getInfoTypesAbility = (payload) => {
-  return { type: GET_ABILITY_INFO, payload };
-};
+export const startFetchAbility = (url) => ({ type: START_FETCH_ABILITY, url });
+
+// экшен для загрузки  инофрмации о способности
+
+export const getInfoTypesAbility = (payload) => ({ type: GET_ABILITY_INFO, payload });

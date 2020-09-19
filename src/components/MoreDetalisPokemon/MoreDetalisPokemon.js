@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getPokemons } from '../../redux/action';
-import { ButtonPrimary } from '../Button/ButtonBack';
+import ButtonPrimary from '../Button/ButtonBack';
 import getId from '../ListPokemons/generatorId';
 import { Table, Td, Container } from './MoreDetalisPokemonStyle';
 
@@ -13,11 +13,9 @@ const MoreDetalisPokemon = () => {
 
   useEffect(() => {
     dispatch(getPokemons());
-  }, []);
+  }, [dispatch]);
 
-  const pokemon = useSelector((state) =>
-    state.pokemons.find((el) => pokemonParams === el.name)
-  );
+  const pokemon = useSelector((state) => state.pokemons.find((el) => pokemonParams === el.name));
 
   return (
     <>

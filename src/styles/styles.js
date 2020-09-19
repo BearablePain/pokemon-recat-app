@@ -1,7 +1,6 @@
-import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet');
   body {
 font-family: 'Press Start 2P', cursive;   
@@ -11,8 +10,4 @@ font-family: 'Press Start 2P', cursive;
   }
 `;
 
-// export const Text = styled.span `
-//    font-family: Roboto, sans-serif;
-// `
-
-
+export default GlobalStyles;
