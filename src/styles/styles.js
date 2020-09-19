@@ -7,6 +7,7 @@ font-family: 'Press Start 2P', cursive;
  letter-spacing: 2px;
     font-size: 23px;
     color: #333;
+    margin: 0;
   }
 `;
 
