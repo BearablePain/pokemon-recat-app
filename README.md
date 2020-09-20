@@ -28,8 +28,6 @@
 Осталось сделать:
 typescript;
 доработать верстку;
-рефакторинг кода;
-комментарии;
 
 strart:
 npm i => npm start => http://localhost:3000/
